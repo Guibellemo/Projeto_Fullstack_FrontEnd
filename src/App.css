@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +35,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+*/
+
+/* Estilização básica para o elemento de navegação */
+nav ul {
+  list-style-type: none; /* Remove os marcadores de lista */
+  margin: 0 0 20px 0;
+  padding: 0;
+  overflow: hidden; /* Garante que os floats funcionem bem */
+  background-color: #333; /* Cor de fundo escura */
+}
+
+/* Estiliza cada item da lista (link) */
+nav li {
+  float: left; /* Faz os itens ficarem lado a lado (horizontal) */
+}
+
+/* Estiliza os links */
+nav li a {
+  display: block; /* Faz o link preencher o <li> inteiro */
+  color: white; /* Cor do texto */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+/* Estilo para quando o mouse passar por cima */
+nav li a:hover {
+  background-color: #111;
 }
