@@ -124,7 +124,7 @@ export default function FormCadastro() {
             {loading ? "Cadastrando..." : "Criar Conta"}
           </button>
 
-          <Link to="/login">Já tem conta? Faça login</Link>
+          <Link to="/">Já tem conta? Faça login</Link>
         </form>
       </div>
     </div>

@@ -93,7 +93,7 @@ export default function FormAtivacao() {
             {loading ? "Ativando..." : "Ativar Conta"}
           </button>
 
-          <Link to="/login">Voltar ao login</Link>
+          <Link to="/">Voltar ao login</Link>
         </form>
       </div>
     </div>

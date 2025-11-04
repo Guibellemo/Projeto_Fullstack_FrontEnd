@@ -40,16 +40,14 @@ export default function FormLogin() {
         if (api.ok) {
             const data = await api.json();
             
-            // Salva token e user_id no localStorage
             localStorage.setItem('access_token', data.access_token);
             localStorage.setItem('user_id', data.user_id);
-            
-            alert('Login realizado com sucesso!');
-            
-            // Redireciona para página home após 1 segundo
+
+
             setTimeout(() => {
                 navigate('/home');
             }, 1000);
+
         } else {
             const errorApi = await api.json();
             console.error("Erro no login:", errorApi);

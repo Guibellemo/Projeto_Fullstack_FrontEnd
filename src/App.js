@@ -5,15 +5,28 @@ import Login from './Components/Login';
 import Cadastro from './Components/Cadastro';
 import Ativacao from './Components/Ativacao';
 import Home from './Components/Home';
-import Cadastro_Produto from './Components/Cadastro-produto'; 
-import Listar_Produto from './Components/Listar-produto'; 
+import Cadastro_Produto from './Components/Cadastro-produto';
+import Listar_Produto from './Components/Listar-produto';
+import Layout from './Components/Layout';
 
 
 function App() {
   return (
     <Router>
       <div className="App">
-        
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/ativacao" element={<Ativacao />} />
+
+          {/* Rotas com Layout (navbar) */}
+          <Route element={<Layout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/cadastro_produto" element={<Cadastro_Produto />} />
+            <Route path="/listar_produto" element={<Listar_Produto />} />
+          </Route>
+        </Routes>
+        {/*
         <nav>
           <ul>
             <li><Link to="/">Login</Link></li>
@@ -25,6 +38,7 @@ function App() {
           </ul>
         </nav>
         
+
         <main>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -35,7 +49,8 @@ function App() {
             <Route path="/listar_produto" element={<Listar_Produto />} />
           </Routes>
         </main>
-        
+        */}
+
       </div>
     </Router>
   );
