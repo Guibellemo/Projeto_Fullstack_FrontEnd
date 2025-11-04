@@ -1,5 +1,4 @@
 // Cadastro.js
-// Cadastro.js
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles.css";
@@ -49,13 +48,23 @@ export default function FormCadastro() {
         const data = await api.json();
         console.log("Resposta API:", data);
 
-        alert("Cadastro realizado com sucesso!");
+        const userId =
+          data.user_id ||
+          (data.usuario && data.usuario.id) ||
+          (data.user && data.user.id);
 
-        // Redirecionamento para tela de ativação (habilitar futuramente)
+        if (userId) {
+          localStorage.setItem("user_id", userId);
+          console.log("ID salvo no localStorage:", userId);
+        } else {
+          console.warn("Nenhum ID retornado pela API:", data);
+        }
+
+        alert("Cadastro realizado com sucesso!");
         setTimeout(() => {
           navigate("/ativacao");
         }, 1000);
-
+      
       } else {
         const errorApi = await api.json();
         console.error("Erro na API:", errorApi);
@@ -121,7 +130,6 @@ export default function FormCadastro() {
     </div>
   );
 }
-
 
 {/*import './styles.css';
 import { Link } from "react-router-dom";
