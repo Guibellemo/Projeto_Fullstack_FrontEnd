@@ -9,6 +9,7 @@ export default function Layout() {
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/cadastro_produto">Cadastrar Produto</Link></li>
           <li><Link to="/listar_produto">Listar Produto</Link></li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
         </ul>
       </nav>
       <main>
