@@ -7,6 +7,7 @@ import Ativacao from './Components/Ativacao';
 import Home from './Components/Home';
 import Cadastro_Produto from './Components/Cadastro-produto';
 import Listar_Produto from './Components/Listar-produto';
+import Vender_Produto from './Components/Vender-produto';
 import Layout from './Components/Layout';
 import Dashboard from './Components/Dashboard';
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/cadastro_produto" element={<Cadastro_Produto />} />
             <Route path="/listar_produto" element={<Listar_Produto />} />
+            <Route path="/vender-produto" element={<Vender_Produto />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
