@@ -478,3 +478,36 @@ li .ClassButton{
     padding: 5px 10px;
   }
 }
+
+
+
+.description-list-sell {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 20px 10px 20px 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.description-list-sell li{
+    margin: 10px 0;
+}
+
+.description-list-sell li:nth-child(1){
+    margin-left: 5%;
+}
+
+.description-list-sell li:nth-child(3){
+    margin: 0;
+}
+
+.description-list-sell li:nth-child(5){
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+}
