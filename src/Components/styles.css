@@ -27,7 +27,7 @@ body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto-principal);
     min-height: 100vh;
-    padding: 20px;
+    padding: 0;
 }
 
 /* ========================================

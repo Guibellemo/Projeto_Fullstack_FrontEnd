@@ -278,7 +278,7 @@ export default function UserProfile() {
                   onClick={handleEdit}
                   disabled={loading}
                 >
-                  Editar ✏️
+                  Editar
                 </button>
               ) : (
                 <button 
