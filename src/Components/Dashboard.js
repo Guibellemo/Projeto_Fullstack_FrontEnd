@@ -8,7 +8,7 @@ import {
 import { TrendingUp, Package, DollarSign, ShoppingCart } from 'lucide-react';
 import './styles.css';
 
-const API_BASE_URL = URL_RENDER;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function Dashboard() {
   const navigate = useNavigate();
