@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles.css";
 
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = URL_RENDER;
 
 export default function FormCadastro() {
   const navigate = useNavigate();
