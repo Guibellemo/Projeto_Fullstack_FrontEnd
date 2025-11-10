@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-const URL_IMAGE = process.env.RENDER_URL_IMAGE;
+const URL_IMAGE = process.env.REACT_APP_URL_IMAGE;
 
 export default function VenderProduto() {
   const navigate = useNavigate();
@@ -180,7 +180,7 @@ export default function VenderProduto() {
                   {/* Mostra imagem do produto */}
                   <div className="product-image-container">
                     <img
-                      src={`${URL_IMAGE}${produto.url_image}`}
+                      src={`${URL_IMAGE.replace(/\/$/, '')}/${produto.url_image.replace(/^\//, '')}`}
                       alt={produto.name}
                       className="product-image"
                     />
