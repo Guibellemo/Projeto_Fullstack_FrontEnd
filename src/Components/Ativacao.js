@@ -14,7 +14,7 @@ export default function FormAtivacao() {
 
     const email = document.getElementById("cadastro-email").value.trim();
     const code = document.getElementById("cadastro-codigo").value.trim();
-    const userId = localStorage.getItem("user_id"); // ✅ obtém o ID salvo no cadastro
+    const userId = localStorage.getItem("user_id");
 
     if (!email || !code) {
       alert("Por favor, preencha todos os campos.");
@@ -99,35 +99,3 @@ export default function FormAtivacao() {
     </div>
   );
 }
-
-
-
-{/*import './styles.css';
-import { Link } from "react-router-dom";
-
-export default function FormAtivacao() {
-
-  function handleAtivacao(e) {
-    e.preventDefault();
-    alert("Código validado com sucesso!");
-  }
-
-  return (
-    <div className="main-container">
-      <div className="form-container">
-        <form id="form-cadastro" onSubmit={handleAtivacao}>
-          <h2>Digite o código recebido</h2>
-          <input 
-            type="text" 
-            placeholder="Código" 
-            required 
-            id="cadastro-codigo"
-            maxLength="6"
-          />
-          <button type="submit" id="botao-ativar-conta">Ativar Conta</button>
-          
-        </form>
-      </div>
-    </div>
-  );
-}*/}

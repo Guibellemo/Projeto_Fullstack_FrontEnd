@@ -1,4 +1,3 @@
-// Dashboard.js - COMPLETO E CORRIGIDO
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -19,12 +18,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     carregarDados();
-
-    // Atualiza estoque a cada 10 segundos (simula tempo real)
     const interval = setInterval(() => {
       carregarEstoque();
     }, 10000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -44,17 +40,14 @@ export default function Dashboard() {
     setLoading(false);
   }
 
-  // === ESTOQUE (sem alterações) ===
   async function carregarEstoque() {
     const token = getToken();
     const userId = getUserId();
-
     if (!token || !userId) {
       alert('Sessão expirada. Faça login novamente.');
       navigate('/');
       return;
     }
-
     try {
       const api = await fetch(`${API_BASE_URL}/product/seller/${userId}`, {
         method: 'GET',
@@ -63,11 +56,9 @@ export default function Dashboard() {
           'Authorization': `Bearer ${token}`
         }
       });
-
       if (api.ok) {
         const data = await api.json();
         const produtos = Array.isArray(data) ? data : data.produtos || [];
-
         const produtosFormatados = produtos
           .filter(p => p.status === 'Ativo')
           .map(p => ({
@@ -78,7 +69,6 @@ export default function Dashboard() {
             minimo: 10,
             categoria: 'Produtos'
           }));
-
         setStockData(produtosFormatados);
       }
     } catch (error) {
@@ -86,19 +76,15 @@ export default function Dashboard() {
     }
   }
 
-  // === RELATÓRIO DE VENDAS (usando suas rotas /report) ===
   async function carregarDadosVendas() {
     const token = getToken();
     const userId = getUserId();
-
     if (!token || !userId) {
       alert('Sessão expirada. Faça login novamente.');
       navigate('/');
       return;
     }
-
     try {
-      // Top 3 produtos
       const topResponse = await fetch(`${API_BASE_URL}/report/three/${userId}`, {
         method: 'GET',
         headers: {
@@ -106,8 +92,6 @@ export default function Dashboard() {
           'Authorization': `Bearer ${token}`
         }
       });
-
-      // Todos os produtos vendidos
       const allResponse = await fetch(`${API_BASE_URL}/report/all/${userId}`, {
         method: 'GET',
         headers: {
@@ -115,22 +99,18 @@ export default function Dashboard() {
           'Authorization': `Bearer ${token}`
         }
       });
-
       if (!topResponse.ok || !allResponse.ok) {
         console.error("Erro ao buscar relatórios de vendas");
         return;
       }
-
       const top3 = await topResponse.json();
       const all = await allResponse.json();
-
       setSalesData({ top3, all });
     } catch (error) {
       console.error("Erro ao carregar relatório de vendas:", error);
     }
   }
 
-  // === Métricas de vendas ===
   const totalVendidos = salesData.all.reduce((acc, item) => acc + item.quantidade_vendida, 0);
   const totalProdutos = salesData.all.length;
   const valorTotalEstoque = stockData.reduce((acc, curr) => acc + (curr.quantidade * curr.preco), 0);
@@ -174,8 +154,6 @@ export default function Dashboard() {
   return (
     <div style={{ padding: '20px', minHeight: '100vh' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-
-        {/* Tabs */}
         <div style={{ marginBottom: '24px' }}>
           <div style={{
             backgroundColor: 'white',
@@ -217,10 +195,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* === ABA DE VENDAS === */}
         {activeTab === 'vendas' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {/* Métricas */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -230,14 +206,11 @@ export default function Dashboard() {
               <MetricCard icon={TrendingUp} title="Produtos Vendidos" value={totalProdutos} />
               <MetricCard icon={ShoppingCart} title="Top 3 Produtos" value={salesData.top3.length} />
             </div>
-
-            {/* Gráficos */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
               gap: '24px'
             }}>
-              {/* Gráfico 1: Todos os produtos */}
               <div style={{
                 backgroundColor: 'white',
                 borderRadius: '8px',
@@ -258,8 +231,6 @@ export default function Dashboard() {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-
-              {/* Gráfico 2: Top 3 produtos */}
               <div style={{
                 backgroundColor: 'white',
                 borderRadius: '8px',
@@ -284,7 +255,6 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* === ABA DE ESTOQUE (igual à sua) === */}
         {activeTab === 'estoque' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{
@@ -304,7 +274,6 @@ export default function Dashboard() {
                 value={stockData.reduce((acc, curr) => acc + curr.quantidade, 0)}
               />
             </div>
-
             <div style={{
               backgroundColor: 'white',
               borderRadius: '8px',

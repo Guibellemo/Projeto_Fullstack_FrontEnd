@@ -67,7 +67,6 @@ export default function CadastroProduto() {
 
     const url = `${API_BASE_URL}/product`;
 
-    // ✅ Enviar via FormData (backend exige)
     const body = new FormData();
     body.append("name", formData.name);
     body.append("price", priceNumber);
@@ -79,7 +78,7 @@ export default function CadastroProduto() {
       const api = await fetch(url, {
         method: "POST",
         headers: {
-          // ✅ NÃO definir Content-Type → fetch cria boundary automaticamente
+
           "Authorization": `Bearer ${token}`,
         },
         body,
@@ -147,8 +146,6 @@ export default function CadastroProduto() {
               required
               disabled={loading}
             />
-
-            {/* ✅ Upload obrigatório */}
             <input
               type="file"
               accept="image/*"
@@ -158,7 +155,7 @@ export default function CadastroProduto() {
             />
 
             <button type="submit" id="botao-salvar" disabled={loading}>
-              {loading ? "Salvando..." : "Salvar 💾"}
+              {loading ? "Salvando..." : "Salvar"}
             </button>
           </form>
         </div>

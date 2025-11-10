@@ -1,4 +1,3 @@
-// Listar-produto.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
@@ -146,8 +145,6 @@ export default function ListarProduto() {
     }
   }
 
-
-
   function handleCancelEdit() {
     setEditingId(null);
     setEditData({});
@@ -205,8 +202,6 @@ export default function ListarProduto() {
             <ul className="product" id="product-1">
               {produtos.map((produto) => (
                 <li key={produto.id} className="list-class" id={`list-id-${produto.id}`}>
-
-                  {/* Mostra imagem do produto */}
                   <div className="product-image-container">
                     <img
                       src={`${URL_IMAGE.replace(/\/$/, '')}/${produto.url_image.replace(/^\//, '')}`}
@@ -242,7 +237,7 @@ export default function ListarProduto() {
                         </li>
                         <li>
                           <label className="file-input-label">
-                            📂 Imagem
+                            Imagem
                             <input
                               type="file"
                               className="file-input-hidden"
@@ -253,12 +248,12 @@ export default function ListarProduto() {
                         </li>
                         <li>
                           <button type="button" className="ClassButton" onClick={() => handleSaveEdit(produto.id)}>
-                            Salvar 💾
+                            Salvar
                           </button>
                         </li>
                         <li>
                           <button type="button" className="ClassButton" onClick={handleCancelEdit}>
-                            Cancelar ❌
+                            Cancelar
                           </button>
                         </li>
                       </>
@@ -273,7 +268,7 @@ export default function ListarProduto() {
                             className="ClassButton"
                             onClick={() => handleEditClick(produto)}
                           >
-                            Editar ✏️
+                            Editar
                           </button>
                         </li>
                         <li>
@@ -282,7 +277,7 @@ export default function ListarProduto() {
                             className="ClassButton"
                             onClick={() => handleDelete(produto.id)}
                           >
-                            Deletar ❌
+                            Deletar
                           </button>
                         </li>
                       </>
