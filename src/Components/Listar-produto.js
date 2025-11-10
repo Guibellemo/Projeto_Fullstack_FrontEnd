@@ -208,7 +208,7 @@ export default function ListarProduto() {
                   {/* Mostra imagem do produto */}
                   <div className="product-image-container">
                     <img
-                      src={`http://127.0.0.1:5000${produto.url_image}`}
+                      src={`https://teste-render-flask-api.onrender.com${produto.url_image}`}
                       alt={produto.name}
                       className="product-image"
                     />
